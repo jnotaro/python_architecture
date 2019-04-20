@@ -14,4 +14,5 @@ def test_add_product_increase_orders_total_cost(
 
     logic.add_product(order_id=1, product_id=1)
 
+    order = orders.get(1)
     assert order.total_cost == 100
