@@ -25,6 +25,10 @@ class IOrderRepository(abc.ABC):
         pass
 
     @abc.abstractmethod
+    def save(self, order: Order) -> Order:
+        pass
+
+    @abc.abstractmethod
     def search(
         self, client: Optional[Client] = None, created: Optional[datetime] = None
     ) -> List[Order]:
@@ -32,10 +36,6 @@ class IOrderRepository(abc.ABC):
 
 
 class IProductRepository(abc.ABC):
-    @abc.abstractmethod
-    def create(self, name: str, price: float) -> Product:
-        pass
-
     @abc.abstractmethod
     def get(self, product_id: int) -> Product:
         pass

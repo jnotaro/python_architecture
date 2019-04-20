@@ -16,13 +16,6 @@ class ProductRepositories(IProductRepository):
         for product in static_data:
             self._ram_storage.add(product)
 
-    def create(self, name: str, price: float) -> Product:
-        product_id = self._ram_storage.next_pk()
-
-        self._ram_storage.add(Product(id=product_id, name=name, price=price))
-
-        return self._ram_storage.get(product_id)
-
     def get(self, product_id: int) -> Product:
         result = self._ram_storage.get(product_id)
         if result is None:

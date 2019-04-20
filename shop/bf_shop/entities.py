@@ -7,20 +7,20 @@ class Base:
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class Client(Base):
     id: int
     name: str
 
 
-@dataclass
+@dataclass(frozen=True)
 class Product(Base):
     id: int
     name: str
     price: float
 
 
-@dataclass
+@dataclass(frozen=True)
 class Order(Base):
     id: int
     created: datetime

@@ -16,6 +16,11 @@ def prepare_repositories() -> StaticRepositories:
     product = Product(id=1, name="Test Product", price=100)
 
     class Orders(IOrderRepository):
+        def save(self, _order: Order) -> Order:
+            nonlocal order
+            order = _order
+            return order
+
         def create(self, client: Client) -> Order:
             ...
 

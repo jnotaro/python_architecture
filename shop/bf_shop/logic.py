@@ -1,3 +1,4 @@
+from dataclasses import replace
 from typing import List
 
 from injector import inject
@@ -30,7 +31,10 @@ class OrderLogic:
         order = self._orders.get(order_id)
         product = self._products.get(product_id)
 
-        order.items.append(product)
-        order.total_cost += product.price
+        order = replace(
+            order,
+            items=order.items + [product],
+            total_cost=order.total_cost + product.price,
+        )
 
-        return order
+        return self._orders.save(order)

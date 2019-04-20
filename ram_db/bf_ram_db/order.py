@@ -30,6 +30,10 @@ class OrderRepositories(IOrderRepository):
             raise OrderNotFound()
         return result
 
+    def save(self, order: Order) -> Order:
+        self._ram_storage.add(order)
+        return order
+
     def search(
         self, client: Optional[Client] = None, created: Optional[datetime] = None
     ) -> List[Order]:
