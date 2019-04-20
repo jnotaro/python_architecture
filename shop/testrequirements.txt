@@ -1,5 +1,5 @@
 pytest==3.9.2
-pytest-flake8==1.0.1
+pytest-flake8==1.0.4
 pytest-cov==2.5.1
 pytest-isort==0.2.0
 black==18.6b4
