@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from functools import reduce
 from typing import Any, Dict, Generic, List, Optional, TypeVar
 
@@ -21,7 +23,7 @@ class RamStorage(Generic[T]):
     def get(self, pk: int) -> Optional[T]:
         return self._storage[pk] if pk in self._storage else None
 
-    def search(self, **kwargs: Any) -> "RamStorage[T]":
+    def search(self, **kwargs: Any) -> RamStorage[T]:
         def filter_by(storage, current_filter: tuple) -> StorageType:
             return {
                 k: v
