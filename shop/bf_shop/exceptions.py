@@ -1,7 +1,7 @@
 from typing import Optional
 
 
-class BaseException(Exception):
+class BfException(Exception):
     def __init__(
         self, message: Optional[str] = None, detail: Optional[str] = None
     ) -> None:
@@ -9,7 +9,7 @@ class BaseException(Exception):
         self.detail = detail or ""
 
 
-class ElementNotFound(BaseException):
+class ElementNotFound(BfException):
     NOT_FOUND = "Element not found"
     DETAILS = ""
 
