@@ -21,7 +21,7 @@ class RamStorage(Generic[T]):
         self._max_pk = max(item_pk, self._max_pk)
 
     def get(self, pk: int) -> Optional[T]:
-        return self._storage[pk] if pk in self._storage else None
+        return self._storage.get(pk)
 
     def search(self, **kwargs: Any) -> RamStorage[T]:
         def filter_by(storage, current_filter: tuple) -> StorageType:
