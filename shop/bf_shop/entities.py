@@ -3,25 +3,25 @@ from datetime import datetime
 from typing import List
 
 
-class Base:
+class BaseEntity:
     pass
 
 
 @dataclass(frozen=True)
-class Client(Base):
+class Client(BaseEntity):
     id: int
     name: str
 
 
 @dataclass(frozen=True)
-class Product(Base):
+class Product(BaseEntity):
     id: int
     name: str
     price: float
 
 
 @dataclass(frozen=True)
-class Order(Base):
+class Order(BaseEntity):
     id: int
     created: datetime
     client: Client
