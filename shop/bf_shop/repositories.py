@@ -5,7 +5,7 @@ from typing import List, Optional
 from bf_shop.entities import Client, Order, Product
 
 
-class IClientRepository(abc.ABC):
+class ClientRepository(abc.ABC):
     @abc.abstractmethod
     def create(self, name: str) -> Client:
         pass
@@ -15,7 +15,7 @@ class IClientRepository(abc.ABC):
         pass
 
 
-class IOrderRepository(abc.ABC):
+class OrderRepository(abc.ABC):
     @abc.abstractmethod
     def create(self, client: Client) -> Order:
         pass
@@ -35,7 +35,7 @@ class IOrderRepository(abc.ABC):
         pass
 
 
-class IProductRepository(abc.ABC):
+class ProductRepository(abc.ABC):
     @abc.abstractmethod
     def get(self, product_id: int) -> Product:
         pass

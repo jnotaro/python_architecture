@@ -4,10 +4,10 @@ from typing import List, Optional
 from bf_ram_db.ram_storage import RamStorage
 from bf_shop.entities import Client, Order
 from bf_shop.exceptions import OrderNotFound
-from bf_shop.repositories import IOrderRepository
+from bf_shop.repositories import OrderRepository
 
 
-class OrderRepositories(IOrderRepository):
+class OrderRamRepository(OrderRepository):
     def __init__(self, static_data: Optional[List[Order]] = None) -> None:
         self._ram_storage = RamStorage[Order]()
 

@@ -4,9 +4,9 @@ from typing import List, Optional, Tuple
 import pytest
 
 from bf_shop.entities import Client, Order, Product
-from bf_shop.repositories import IClientRepository, IOrderRepository, IProductRepository
+from bf_shop.repositories import ClientRepository, OrderRepository, ProductRepository
 
-StaticRepositories = Tuple[IOrderRepository, IProductRepository, IClientRepository]
+StaticRepositories = Tuple[OrderRepository, ProductRepository, ClientRepository]
 
 
 @pytest.fixture(scope="function")
@@ -15,7 +15,7 @@ def prepare_repositories() -> StaticRepositories:
 
     product = Product(id=1, name="Test Product", price=100)
 
-    class Orders(IOrderRepository):
+    class Orders(OrderRepository):
         def save(self, _order: Order) -> Order:
             nonlocal order
             order = _order
@@ -32,14 +32,14 @@ def prepare_repositories() -> StaticRepositories:
         ) -> List[Order]:
             pass
 
-    class Products(IProductRepository):
+    class Products(ProductRepository):
         def create(self, name: str, price: float) -> Product:
             ...
 
         def get(self, product_id: int) -> Product:
             return product
 
-    class Clients(IClientRepository):
+    class Clients(ClientRepository):
         def create(self, name: str) -> Client:
             ...
 

@@ -3,10 +3,10 @@ from typing import List, Optional
 from bf_ram_db.ram_storage import RamStorage
 from bf_shop.entities import Product
 from bf_shop.exceptions import ProductNotFound
-from bf_shop.repositories import IProductRepository
+from bf_shop.repositories import ProductRepository
 
 
-class ProductRepositories(IProductRepository):
+class ProductRamRepository(ProductRepository):
     def __init__(self, static_data: Optional[List[Product]] = None) -> None:
         self._ram_storage = RamStorage[Product]()
 

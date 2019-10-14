@@ -4,20 +4,20 @@ from typing import List
 from injector import inject
 
 from bf_shop.entities import Order
-from bf_shop.repositories import IClientRepository, IOrderRepository, IProductRepository
+from bf_shop.repositories import ClientRepository, OrderRepository, ProductRepository
 
 
 class OrderLogic:
     @inject
     def __init__(
         self,
-        orders: IOrderRepository,
-        products: IProductRepository,
-        clients: IClientRepository,
+        orders: OrderRepository,
+        products: ProductRepository,
+        clients: ClientRepository,
     ) -> None:
-        self._orders: IOrderRepository = orders
-        self._products: IProductRepository = products
-        self._clients: IClientRepository = clients
+        self._orders: OrderRepository = orders
+        self._products: ProductRepository = products
+        self._clients: ClientRepository = clients
 
     def search(self, client_id: int) -> List[Order]:
         client = self._clients.get(client_id)

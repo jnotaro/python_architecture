@@ -1,6 +1,6 @@
 import injector
 
-from bf_shop.repositories import IClientRepository, IOrderRepository, IProductRepository
+from bf_shop.repositories import ClientRepository, OrderRepository, ProductRepository
 
 
 class LogicModule(injector.Module):
@@ -13,24 +13,24 @@ class LogicModule(injector.Module):
 class MemoryProvidersModule(injector.Module):
     @injector.singleton
     @injector.provider
-    def provide_clients(self) -> IClientRepository:
-        from bf_ram_db.client import ClientRepositories
+    def provide_clients(self) -> ClientRepository:
+        from bf_ram_db.client import ClientRamRepository
         from bf_api.example_data import clients
 
-        return ClientRepositories(static_data=clients)
+        return ClientRamRepository(static_data=clients)
 
     @injector.singleton
     @injector.provider
-    def provide_orders(self) -> IOrderRepository:
-        from bf_ram_db.order import OrderRepositories
+    def provide_orders(self) -> OrderRepository:
+        from bf_ram_db.order import OrderRamRepository
         from bf_api.example_data import orders
 
-        return OrderRepositories(static_data=orders)
+        return OrderRamRepository(static_data=orders)
 
     @injector.singleton
     @injector.provider
-    def provide_products(self) -> IProductRepository:
-        from bf_ram_db.product import ProductRepositories
+    def provide_products(self) -> ProductRepository:
+        from bf_ram_db.product import ProductRamRepository
         from bf_api.example_data import products
 
-        return ProductRepositories(static_data=products)
+        return ProductRamRepository(static_data=products)
